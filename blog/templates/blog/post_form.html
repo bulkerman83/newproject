@@ -9,8 +9,11 @@
 	<form method="post" enctype="multipart/form-data">{% csrf_token %}
 		<table>
 			{{form}}
+			<tr>
+				<th><laber for="id_tags_str">Tags:</laber></th>
+				<td><input type="type" name="tags_str" id="id_tags_str"></td>
+			</tr>
 		</table>
-			<br/>
-		<button type="submit" class="btn btn-primary fload-right">Submit</button>
+		<button type="submit" class="btn btn-primary float-right">Submit</button>
 	</form>
 {% endblock %}
