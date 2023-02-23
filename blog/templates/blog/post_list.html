@@ -9,7 +9,7 @@
 
             <h1>Blog
             	{% if category %}<span class="badge badge-secondary">{{category}}</span>{% endif %}
-				
+				{% if tag %}<span class="badge badge-secondary">{{ tag }}({{tag.post_set.count}})</span>{% endif %}
           
             {% if post_list.exists %}
 
@@ -33,6 +33,15 @@
                         {% endif %}
                         <p class="card-text">{{ p.content | truncatewords:15 }}</p>
                 
+ 						{% if p.tags.exists %}
+                        	{% for tag in p.tags.all %}
+                        		<a href="{{ tag.get_absolute_url }}"><span class="badge badge-pill badge-light">{{ tag }}</span></a>
+                        	{% endfor %}
+                        	<br/>
+                        	<br/>
+                        {% endif %}
+
+
                         <a href="{{ p.get_absolute_url}}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
